@@ -27,6 +27,10 @@ jobs:
           repository: R2NorthstarCN/NorthstarMods
           ref: "main" # ${{ env.NORTHSTAR_VERSION }}
           path: northstar-mods
+      - name: Cleanup Northstar Mods repository files
+        working-directory: northstar-mods
+        run: |
+          rm -rf .git .github .gitignore *.md LICENSE thunderstore .ci.env.example
       - name: Update mod version info
         run: |
           export MOD_VERSION=$(echo $NORTHSTAR_VERSION | tr -d 'v')
